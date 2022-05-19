@@ -73,7 +73,7 @@ export const CreateSidebarLinks = ({ routes, collapseState, setCollapseState }) 
               <NavItem className={activeRoute(route.layout + route.path, location)} key={route.key}>
                 <NavLink
                   to={route.layout + route.path}
-                  activeClassName=""
+                  activeclassname=""
                   onClick={() => closeSidebar()}
                   tag={NavLinkRRD}
                 >

@@ -68,7 +68,7 @@ export const AdminNavbar = ({ theme }) => {
                     </Media>
                   </Media>
                 </DropdownToggle>
-                <DropdownMenu end>
+                <DropdownMenu>
                   <DropdownItem className="noti-title" header tag="div">
                     <h6 className="text-overflow m-0">Welcome!</h6>
                   </DropdownItem>

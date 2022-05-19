@@ -37,15 +37,6 @@ export const groupMenu = [
         key: "Groups/Search Group",
         allowedRoles: [...allAuthRoles],
       },
-      {
-        path: GROUP_CREATE,
-        name: "Edit Group",
-        miniName: "CN",
-        component: <CreateGroupPage />,
-        layout: "/admin",
-        key: "Groups/Create Group",
-        allowedRoles: [...fromAdvocateRole],
-      },
     ],
   },
   {

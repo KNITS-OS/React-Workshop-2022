@@ -1,6 +1,6 @@
 import { allAuthRoles } from "../utils";
 
-import { CreateDepartmentPage } from ".";
+import { CreateDepartmentPage, SearchDepartments } from ".";
 
 export const departmentMenu = [
   {
@@ -19,6 +19,15 @@ export const departmentMenu = [
         component: <CreateDepartmentPage />,
         layout: "/admin",
         key: "Departments/CreateDepartment",
+        allowedRoles: [...allAuthRoles],
+      },
+      {
+        path: "/departments/department-search",
+        name: "Search Department",
+        miniName: "SD",
+        component: <SearchDepartments />,
+        layout: "/admin",
+        key: "Departments/SearchDepartments",
         allowedRoles: [...allAuthRoles],
       },
     ],
