@@ -25,6 +25,16 @@ export const documentRatings = [
   { value: "5", label: "5" },
 ];
 
+export const Role = {
+  Admin: 6,
+  RegionalManager: 5,
+  CountryManager: 4,
+  OperationManager: 3,
+  Employee: 2,
+  Anonymous: 1,
+};
+Object.freeze(Role);
+
 export const NO_REPORT_CACHED = { NONE: 0 };
 export const REPORT_KEY_ACTIVE_MEMBERS = "ActiveMembers";
 export const REPORT_KEY_NEW_MEMBERS = "NewMembers";

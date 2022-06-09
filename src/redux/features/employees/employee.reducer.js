@@ -1,7 +1,9 @@
 import { AppActionType } from "redux/app";
 
+import { employeesData } from "data";
+
 const initialState = {
-  entities: [],
+  entities: employeesData,
   entity: null,
   isLoading: false,
   isSuccess: false,
@@ -85,6 +87,17 @@ export const employeeReducer = (employeeState = initialState, action) => {
         isSuccess: true,
         error: {},
         entities: employeesToKeep,
+        entity,
+      };
+
+    case "create-employee":
+      updatedEmployees = [...employeeState.entities, action.payload];
+
+      return {
+        isLoading: false,
+        isSuccess: true,
+        error: {},
+        entities: updatedEmployees,
         entity,
       };
 

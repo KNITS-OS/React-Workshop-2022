@@ -11,6 +11,10 @@ const updateEmployeeLoading = () =>
 const deleteEmployeeLoading = () =>
   typedAction(AppActionType.DELETE_EMPLOYEE_LOADING, AppActionType.DELETE_EMPLOYEE_LOADING);
 
+export const createEmployee = data => {
+  return { type: AppActionType.CREATE_EMPLOYEE, payload: data };
+};
+
 const searchEmployeeComplete = data => typedAction(AppActionType.SEARCH_EMPLOYEE_COMPLETE, data);
 const searchEmployeesComplete = data => typedAction(AppActionType.SEARCH_EMPLOYEES_COMPLETE, data);
 const updateEmployeeComplete = data => typedAction(AppActionType.UPDATE_EMPLOYEE_COMPLETE, data);
