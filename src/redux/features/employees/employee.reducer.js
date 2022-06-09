@@ -90,7 +90,7 @@ export const employeeReducer = (employeeState = initialState, action) => {
         entity,
       };
 
-    case "create-employee":
+    case AppActionType.CREATE_EMPLOYEE:
       updatedEmployees = [...employeeState.entities, action.payload];
 
       return {
