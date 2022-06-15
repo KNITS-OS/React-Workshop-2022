@@ -4,6 +4,7 @@ import { documentsMenu } from "pages/documents";
 import { groupMenu } from "pages/groups";
 import { homeMenu } from "pages/home";
 import { partsInventoryPage } from "pages/parts-inventory";
+import { purchaseOrdersPage } from "pages/purchase-orders";
 import { userMenu } from "pages/users";
 
 export const routes = [
@@ -14,4 +15,5 @@ export const routes = [
   ...documentsMenu,
   ...authMenu,
   ...partsInventoryPage,
+  ...purchaseOrdersPage,
 ];

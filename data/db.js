@@ -4,6 +4,7 @@ const documentsData = require("./documents");
 const employeesData = require("./employees");
 const groupsData = require("./groups");
 const partsInventoryData = require("./parts-inventory");
+const purchaseOrdersData = require("./purchase-orders");
 const reportData = require("./report-data");
 
 module.exports = () => ({
@@ -24,4 +25,5 @@ module.exports = () => ({
   "new-members-report": reportData.newMembersMapData(),
   "self-resigned-members-report": reportData.selfResignedMembersMapData(),
   partsInventory: partsInventoryData,
+  purchaseOrders: purchaseOrdersData,
 });
