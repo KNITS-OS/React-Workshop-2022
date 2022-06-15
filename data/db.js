@@ -3,6 +3,7 @@ const countriesData = require("./countries");
 const documentsData = require("./documents");
 const employeesData = require("./employees");
 const groupsData = require("./groups");
+const partsInventoryData = require("./parts-inventory");
 const reportData = require("./report-data");
 
 module.exports = () => ({
@@ -22,4 +23,5 @@ module.exports = () => ({
   "auto-offboarded-members-report": reportData.autoOffboardedMembersMapData(),
   "new-members-report": reportData.newMembersMapData(),
   "self-resigned-members-report": reportData.selfResignedMembersMapData(),
+  partsInventory: partsInventoryData,
 });
