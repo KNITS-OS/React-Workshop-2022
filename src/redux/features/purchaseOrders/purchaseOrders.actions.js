@@ -7,11 +7,20 @@ const purchaseOrdersLoading = () =>
     AppActionType.FETCH_PURCHASE_ORDERS_LOADING,
     AppActionType.FETCH_PURCHASE_ORDERS_LOADING
   );
+const deletePurchaseOrdersLoading = () =>
+  typedAction(
+    AppActionType.DELETE_PURCHASE_ORDERS_LOADING,
+    AppActionType.DELETE_PURCHASE_ORDERS_LOADING
+  );
+
+const purchaseOrdersError = err => typedAction(AppActionType.FETCH_PURCHASE_ORDERS_ERROR, err);
+const deletePurchaseOrdersError = err =>
+  typedAction(AppActionType.DELETE_PURCHASE_ORDERS_ERROR, err);
 
 const purchaseOrdersComplete = data =>
   typedAction(AppActionType.FETCH_PURCHASE_ORDERS_COMPLETE, data);
-
-const purchaseOrdersError = err => typedAction(AppActionType.FETCH_PURCHASE_ORDERS_ERROR, err);
+const deletePurchaseOrdersComplete = data =>
+  typedAction(AppActionType.DELETE_PURCHASE_ORDERS_COMPLETE, data);
 
 export const fetchPurchaseOrders = () => async dispatch => {
   try {
@@ -22,5 +31,16 @@ export const fetchPurchaseOrders = () => async dispatch => {
     dispatch(purchaseOrdersComplete(data));
   } catch (err) {
     dispatch(purchaseOrdersError(err));
+  }
+};
+
+export const deletePurchaseOrders = id => async dispatch => {
+  try {
+    dispatch(deletePurchaseOrdersLoading());
+
+    await purchaseOrdersService.deletePurchaseOrders(id);
+    dispatch(deletePurchaseOrdersComplete(id));
+  } catch (err) {
+    dispatch(deletePurchaseOrdersError(err));
   }
 };

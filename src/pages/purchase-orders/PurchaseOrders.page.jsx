@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 import { Card, CardBody, Container, Row, Col, Input, Label, Button } from "reactstrap";
 
-import { selectAllPurchaseOrdersData, fetchPurchaseOrders } from "redux/features";
+import {
+  selectAllPurchaseOrdersData,
+  fetchPurchaseOrders,
+  deletePurchaseOrders,
+} from "redux/features";
 
 import { BoxHeader } from "components/headers";
 import { ReactTable } from "components/widgets";
@@ -31,7 +35,8 @@ export const PurchaseOrdersPage = () => {
   const onDeletePurchaseOrders = e => {
     e.preventDefault();
     const { id } = e.currentTarget;
-    console.log("delete purchase orders", id);
+
+    dispatch(deletePurchaseOrders(parseInt(id)));
   };
 
   return (

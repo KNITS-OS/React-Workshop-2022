@@ -8,6 +8,8 @@ import {
   selectAllVendorsData,
   selectAllCustomersData,
   fetchVendorsCustomers,
+  deleteCustomer,
+  deleteVendor,
 } from "redux/features";
 
 import { BoxHeader } from "components/headers";
@@ -44,7 +46,8 @@ export const VendorsCustomersPage = () => {
   const onDeleteVendor = e => {
     e.preventDefault();
     const { id } = e.currentTarget;
-    console.log("delete vendor", id);
+
+    dispatch(deleteVendor(parseInt(id)));
   };
 
   const onViewCustomerDetails = e => {
@@ -56,7 +59,8 @@ export const VendorsCustomersPage = () => {
   const onDeleteCustomer = e => {
     e.preventDefault();
     const { id } = e.currentTarget;
-    console.log("delete customer", id);
+
+    dispatch(deleteCustomer(parseInt(id)));
   };
 
   return (

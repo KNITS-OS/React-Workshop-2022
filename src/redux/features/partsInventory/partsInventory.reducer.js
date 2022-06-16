@@ -11,12 +11,24 @@ export const partsInventoryReducer = (partsInventoryState = initialState, action
   const { type, payload } = action;
   const { partsInventory } = partsInventoryState;
 
+  let partsInventoryToKeep = [];
+
   switch (type) {
     case AppActionType.FETCH_PARTS_INVENTORY_LOADING:
+    case AppActionType.DELETE_PARTS_INVENTORY_LOADING:
       return {
         isLoading: true,
         isSuccess: false,
         error: {},
+        partsInventory,
+      };
+
+    case AppActionType.FETCH_PARTS_INVENTORY_ERROR:
+    case AppActionType.DELETE_PARTS_INVENTORY_ERROR:
+      return {
+        isLoading: false,
+        isSuccess: false,
+        error: payload,
         partsInventory,
       };
 
@@ -28,12 +40,14 @@ export const partsInventoryReducer = (partsInventoryState = initialState, action
         partsInventory: payload,
       };
 
-    case AppActionType.FETCH_PARTS_INVENTORY_ERROR:
+    case AppActionType.DELETE_PARTS_INVENTORY_COMPLETE:
+      partsInventoryToKeep = partsInventoryState.partsInventory.filter(({ id }) => id !== payload);
+
       return {
         isLoading: false,
-        isSuccess: false,
-        error: payload,
-        partsInventory,
+        isSuccess: true,
+        error: {},
+        partsInventory: partsInventoryToKeep,
       };
 
     default:

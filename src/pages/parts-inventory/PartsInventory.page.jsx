@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 
 import { Card, CardBody, Container, Row, Col, Button, Input, Label } from "reactstrap";
 
-import { selectAllPartsInventoryData, fetchPartsInventory } from "redux/features";
+import {
+  selectAllPartsInventoryData,
+  fetchPartsInventory,
+  deletePartsInventory,
+} from "redux/features";
 
 import { BoxHeader } from "components/headers";
 import { ReactTable } from "components/widgets";
@@ -31,7 +35,8 @@ export const PartsInventoryPage = () => {
   const onDeletePartsInventory = e => {
     e.preventDefault();
     const { id } = e.currentTarget;
-    console.log("delete parts inventory", id);
+
+    dispatch(deletePartsInventory(parseInt(id)));
   };
 
   return (
