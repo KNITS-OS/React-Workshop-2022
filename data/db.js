@@ -1,11 +1,13 @@
 const businessUnitsData = require("./business-units");
 const countriesData = require("./countries");
+const customersData = require("./customers");
 const documentsData = require("./documents");
 const employeesData = require("./employees");
 const groupsData = require("./groups");
 const partsInventoryData = require("./parts-inventory");
 const purchaseOrdersData = require("./purchase-orders");
 const reportData = require("./report-data");
+const vendorsData = require("./vendors");
 
 module.exports = () => ({
   employee: employeesData,
@@ -26,4 +28,6 @@ module.exports = () => ({
   "self-resigned-members-report": reportData.selfResignedMembersMapData(),
   partsInventory: partsInventoryData,
   purchaseOrders: purchaseOrdersData,
+  vendors: vendorsData,
+  customers: customersData,
 });

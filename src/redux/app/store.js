@@ -12,6 +12,7 @@ import {
   worldOverviewReducer,
   partsInventoryReducer,
   purchaseOrdersReducer,
+  vendorsCustomersReducer,
 } from "redux/features";
 
 const middleware = [thunk];
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   country: countryReducer,
   partsInventory: partsInventoryReducer,
   purchaseOrders: purchaseOrdersReducer,
+  vendorsCustomers: vendorsCustomersReducer,
 });
 
 export const store = createStore(
