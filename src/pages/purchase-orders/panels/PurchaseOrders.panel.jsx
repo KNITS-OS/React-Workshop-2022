@@ -38,6 +38,7 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
 
     onSave(newPurchaseOrders);
   };
+
   return (
     <Form>
       <h6 className="heading-small text-muted mb-4">Purchase Orders Information</h6>
