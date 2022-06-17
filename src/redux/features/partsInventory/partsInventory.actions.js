@@ -12,15 +12,24 @@ const deletePartsInventoryLoading = () =>
     AppActionType.DELETE_PARTS_INVENTORY_LOADING,
     AppActionType.DELETE_PARTS_INVENTORY_LOADING
   );
+const updatePartsInventoryLoading = () =>
+  typedAction(
+    AppActionType.UPDATE_PARTS_INVENTORY_LOADING,
+    AppActionType.UPDATE_PARTS_INVENTORY_LOADING
+  );
 
 const partsInventoryError = err => typedAction(AppActionType.FETCH_PARTS_INVENTORY_ERROR, err);
 const deletePartsInventoryError = err =>
   typedAction(AppActionType.DELETE_PARTS_INVENTORY_ERROR, err);
+const updatePartsInventoryError = err =>
+  typedAction(AppActionType.UPDATE_PARTS_INVENTORY_ERROR, err);
 
 const partsInventoryComplete = data =>
   typedAction(AppActionType.FETCH_PARTS_INVENTORY_COMPLETE, data);
 const deletePartsInventoryComplete = data =>
   typedAction(AppActionType.DELETE_PARTS_INVENTORY_COMPLETE, data);
+const updatePartsInventoryComplete = data =>
+  typedAction(AppActionType.UPDATE_PARTS_INVENTORY_COMPLETE, data);
 
 export const fetchPartsInventory = () => async dispatch => {
   try {
@@ -31,6 +40,17 @@ export const fetchPartsInventory = () => async dispatch => {
     dispatch(partsInventoryComplete(data));
   } catch (err) {
     dispatch(partsInventoryError(err));
+  }
+};
+
+export const updatePartsInventory = updatedPartsInventory => async dispatch => {
+  try {
+    dispatch(updatePartsInventoryLoading());
+
+    const { data } = await partsInventoryService.updatePartsInventory(updatedPartsInventory);
+    dispatch(updatePartsInventoryComplete(data));
+  } catch (err) {
+    dispatch(updatePartsInventoryError(err));
   }
 };
 
