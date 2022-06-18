@@ -8,10 +8,15 @@ const updatePurchaseOrders = updatedPurchaseOrders => {
   return httpCommon.put(`${PURCHASE_ORDERS_ROUTE}/${id}`, body);
 };
 
+const createPurchaseOrder = newPurchaseOrder => {
+  return httpCommon.post(`${PURCHASE_ORDERS_ROUTE}`, newPurchaseOrder);
+};
+
 const deletePurchaseOrders = id => httpCommon.delete(`${PURCHASE_ORDERS_ROUTE}/${id}`);
 
 export const purchaseOrdersService = {
   getAllPurchaseOrders,
   updatePurchaseOrders,
   deletePurchaseOrders,
+  createPurchaseOrder,
 };

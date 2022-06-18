@@ -8,12 +8,13 @@ import {
   selectAllPartsInventoryData,
   fetchPartsInventory,
   deletePartsInventory,
+  createPartsInventory,
 } from "redux/features";
 
 import { BoxHeader } from "components/headers";
 import { ReactTable } from "components/widgets";
 
-import { PartsInventoryTableColumns, PARTS_INVENTORY_DETAILS } from ".";
+import { PartsInventoryTableColumns, PARTS_INVENTORY_DETAILS, mockPartsInventory } from ".";
 
 export const PartsInventoryPage = () => {
   const navigate = useNavigate();
@@ -37,6 +38,12 @@ export const PartsInventoryPage = () => {
     const { id } = e.currentTarget;
 
     dispatch(deletePartsInventory(parseInt(id)));
+  };
+
+  const onCreateNewPartsInventory = e => {
+    e.preventDefault();
+
+    dispatch(createPartsInventory(mockPartsInventory));
   };
 
   return (
@@ -81,7 +88,9 @@ export const PartsInventoryPage = () => {
                   </Col>
                   <Col lg="auto">
                     <Button>Show/Hide</Button>
-                    <Button color="primary">+ Part</Button>
+                    <Button color="primary" onClick={onCreateNewPartsInventory}>
+                      + Part
+                    </Button>
                   </Col>
                 </Row>
               </CardBody>

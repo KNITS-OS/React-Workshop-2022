@@ -17,12 +17,18 @@ const updatePurchaseOrdersLoading = () =>
     AppActionType.UPDATE_PURCHASE_ORDERS_LOADING,
     AppActionType.UPDATE_PURCHASE_ORDERS_LOADING
   );
+const createPurchaseOrderLoading = () =>
+  typedAction(
+    AppActionType.CREATE_PURCHASE_ORDER_LOADING,
+    AppActionType.CREATE_PURCHASE_ORDER_LOADING
+  );
 
 const purchaseOrdersError = err => typedAction(AppActionType.FETCH_PURCHASE_ORDERS_ERROR, err);
 const deletePurchaseOrdersError = err =>
   typedAction(AppActionType.DELETE_PURCHASE_ORDERS_ERROR, err);
 const updatePurchaseOrdersError = err =>
   typedAction(AppActionType.UPDATE_PURCHASE_ORDERS_ERROR, err);
+const createPurchaseOrderError = err => typedAction(AppActionType.CREATE_PURCHASE_ORDER_ERROR, err);
 
 const purchaseOrdersComplete = data =>
   typedAction(AppActionType.FETCH_PURCHASE_ORDERS_COMPLETE, data);
@@ -30,6 +36,8 @@ const deletePurchaseOrdersComplete = data =>
   typedAction(AppActionType.DELETE_PURCHASE_ORDERS_COMPLETE, data);
 const updatePurchaseOrdersComplete = data =>
   typedAction(AppActionType.UPDATE_PURCHASE_ORDERS_COMPLETE, data);
+const createPurchaseOrderComplete = data =>
+  typedAction(AppActionType.CREATE_PURCHASE_ORDER_COMPLETE, data);
 
 export const fetchPurchaseOrders = () => async dispatch => {
   try {
@@ -62,5 +70,16 @@ export const deletePurchaseOrders = id => async dispatch => {
     dispatch(deletePurchaseOrdersComplete(id));
   } catch (err) {
     dispatch(deletePurchaseOrdersError(err));
+  }
+};
+
+export const createPurchaseOrder = newPurchaseOrder => async dispatch => {
+  try {
+    dispatch(createPurchaseOrderLoading());
+
+    await purchaseOrdersService.createPurchaseOrder(newPurchaseOrder);
+    dispatch(createPurchaseOrderComplete(newPurchaseOrder));
+  } catch (err) {
+    dispatch(createPurchaseOrderError(err));
   }
 };

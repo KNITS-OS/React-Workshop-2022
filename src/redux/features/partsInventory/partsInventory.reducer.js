@@ -19,6 +19,7 @@ export const partsInventoryReducer = (partsInventoryState = initialState, action
     case AppActionType.FETCH_PARTS_INVENTORY_LOADING:
     case AppActionType.UPDATE_PARTS_INVENTORY_LOADING:
     case AppActionType.DELETE_PARTS_INVENTORY_LOADING:
+    case AppActionType.CREATE_PARTS_INVENTORY_LOADING:
       return {
         isLoading: true,
         isSuccess: false,
@@ -30,6 +31,7 @@ export const partsInventoryReducer = (partsInventoryState = initialState, action
     case AppActionType.FETCH_PARTS_INVENTORY_ERROR:
     case AppActionType.UPDATE_PARTS_INVENTORY_ERROR:
     case AppActionType.DELETE_PARTS_INVENTORY_ERROR:
+    case AppActionType.CREATE_PARTS_INVENTORY_ERROR:
       return {
         isLoading: false,
         isSuccess: false,
@@ -75,6 +77,17 @@ export const partsInventoryReducer = (partsInventoryState = initialState, action
         isSuccess: true,
         error: {},
         partsInventory: partsInventoryToKeep,
+        singlePartsInventory,
+      };
+
+    case AppActionType.CREATE_PARTS_INVENTORY_COMPLETE:
+      updatedPartsInventory = [...partsInventoryState.partsInventory, payload];
+
+      return {
+        isLoading: false,
+        isSuccess: true,
+        error: {},
+        partsInventory: updatedPartsInventory,
         singlePartsInventory,
       };
 

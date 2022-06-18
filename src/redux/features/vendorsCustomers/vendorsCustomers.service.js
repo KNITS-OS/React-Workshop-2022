@@ -16,6 +16,14 @@ const updateCustomer = updatedCustomers => {
   return httpCommon.put(`${CUSTOMERS_ROUTE}/${id}`, body);
 };
 
+const createVendor = newVendor => {
+  return httpCommon.post(`${VENDORS_ROUTE}`, newVendor);
+};
+
+const createCustomer = newCustomer => {
+  return httpCommon.post(`${CUSTOMERS_ROUTE}`, newCustomer);
+};
+
 const deleteVendor = id => httpCommon.delete(`${VENDORS_ROUTE}/${id}`);
 
 const deleteCustomer = id => httpCommon.delete(`${CUSTOMERS_ROUTE}/${id}`);
@@ -27,4 +35,6 @@ export const vendorsCustomersService = {
   updateCustomer,
   deleteVendor,
   deleteCustomer,
+  createVendor,
+  createCustomer,
 };

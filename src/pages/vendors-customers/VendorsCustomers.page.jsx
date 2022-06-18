@@ -10,6 +10,8 @@ import {
   fetchVendorsCustomers,
   deleteCustomer,
   deleteVendor,
+  createCustomer,
+  createVendor,
 } from "redux/features";
 
 import { BoxHeader } from "components/headers";
@@ -21,6 +23,8 @@ import {
   VendorsCustomersSwitchButton,
   VENDORS_DETAILS,
   CUSTOMERS_DETAILS,
+  mockCustomer,
+  mockVendor,
 } from ".";
 
 export const VendorsCustomersPage = () => {
@@ -43,6 +47,12 @@ export const VendorsCustomersPage = () => {
     navigate(`/admin${VENDORS_DETAILS}/${id}`);
   };
 
+  const onViewCustomerDetails = e => {
+    e.preventDefault();
+    const { id } = e.currentTarget;
+    navigate(`/admin${CUSTOMERS_DETAILS}/${id}`);
+  };
+
   const onDeleteVendor = e => {
     e.preventDefault();
     const { id } = e.currentTarget;
@@ -50,17 +60,23 @@ export const VendorsCustomersPage = () => {
     dispatch(deleteVendor(parseInt(id)));
   };
 
-  const onViewCustomerDetails = e => {
-    e.preventDefault();
-    const { id } = e.currentTarget;
-    navigate(`/admin${CUSTOMERS_DETAILS}/${id}`);
-  };
-
   const onDeleteCustomer = e => {
     e.preventDefault();
     const { id } = e.currentTarget;
 
     dispatch(deleteCustomer(parseInt(id)));
+  };
+
+  const onCreateNewVendor = e => {
+    e.preventDefault();
+
+    dispatch(createVendor(mockVendor));
+  };
+
+  const onCreateNewCustomer = e => {
+    e.preventDefault();
+
+    dispatch(createCustomer(mockCustomer));
   };
 
   return (
@@ -86,7 +102,12 @@ export const VendorsCustomersPage = () => {
                     </Row>
                   </Col>
                   <Col xl="auto">
-                    <Button color="primary">+ {category}</Button>
+                    <Button
+                      color="primary"
+                      onClick={category === "Vendors" ? onCreateNewVendor : onCreateNewCustomer}
+                    >
+                      + {category}
+                    </Button>
                   </Col>
                 </Row>
               </CardHeader>

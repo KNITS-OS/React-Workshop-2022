@@ -8,12 +8,13 @@ import {
   selectAllPurchaseOrdersData,
   fetchPurchaseOrders,
   deletePurchaseOrders,
+  createPurchaseOrder,
 } from "redux/features";
 
 import { BoxHeader } from "components/headers";
 import { ReactTable } from "components/widgets";
 
-import { PurchaseOrdersTableColumns, PURCHASE_ORDERS_DETAILS } from ".";
+import { PurchaseOrdersTableColumns, PURCHASE_ORDERS_DETAILS, mockPurchaseOrder } from ".";
 
 export const PurchaseOrdersPage = () => {
   const navigate = useNavigate();
@@ -39,6 +40,12 @@ export const PurchaseOrdersPage = () => {
     dispatch(deletePurchaseOrders(parseInt(id)));
   };
 
+  const onCreateNewPurchaseOrder = e => {
+    e.preventDefault();
+
+    dispatch(createPurchaseOrder(mockPurchaseOrder));
+  };
+
   return (
     <>
       <BoxHeader />
@@ -62,7 +69,9 @@ export const PurchaseOrdersPage = () => {
                   <Col lg="auto">
                     <Button>Show/Hide</Button>
                     <Button>Export</Button>
-                    <Button color="primary">+ Purchase Order</Button>
+                    <Button color="primary" onClick={onCreateNewPurchaseOrder}>
+                      + Purchase Order
+                    </Button>
                   </Col>
                 </Row>
               </CardBody>

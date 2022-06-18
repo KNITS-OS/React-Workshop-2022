@@ -19,6 +19,7 @@ export const purchaseOrdersReducer = (purchaseOrdersState = initialState, action
     case AppActionType.FETCH_PURCHASE_ORDERS_LOADING:
     case AppActionType.UPDATE_PURCHASE_ORDERS_LOADING:
     case AppActionType.DELETE_PURCHASE_ORDERS_LOADING:
+    case AppActionType.CREATE_PURCHASE_ORDER_LOADING:
       return {
         isLoading: true,
         isSuccess: false,
@@ -30,6 +31,7 @@ export const purchaseOrdersReducer = (purchaseOrdersState = initialState, action
     case AppActionType.FETCH_PURCHASE_ORDERS_ERROR:
     case AppActionType.UPDATE_PURCHASE_ORDERS_ERROR:
     case AppActionType.DELETE_PURCHASE_ORDERS_ERROR:
+    case AppActionType.CREATE_PURCHASE_ORDER_ERROR:
       return {
         isLoading: false,
         isSuccess: false,
@@ -75,6 +77,17 @@ export const purchaseOrdersReducer = (purchaseOrdersState = initialState, action
         isSuccess: true,
         error: {},
         purchaseOrders: purchaseOrdersToKeep,
+        singlePurchaseOrder,
+      };
+
+    case AppActionType.CREATE_PURCHASE_ORDER_COMPLETE:
+      updatedPurchaseOrders = [...purchaseOrdersState.purchaseOrders, payload];
+
+      return {
+        isLoading: false,
+        isSuccess: true,
+        error: {},
+        purchaseOrders: updatedPurchaseOrders,
         singlePurchaseOrder,
       };
 

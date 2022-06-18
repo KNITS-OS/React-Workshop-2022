@@ -25,6 +25,8 @@ export const vendorsCustomersReducer = (vendorsCustomersState = initialState, ac
     case AppActionType.DELETE_CUSTOMER_LOADING:
     case AppActionType.UPDATE_VENDOR_LOADING:
     case AppActionType.UPDATE_CUSTOMER_LOADING:
+    case AppActionType.CREATE_VENDOR_LOADING:
+    case AppActionType.CREATE_CUSTOMER_LOADING:
       return {
         isLoading: true,
         isSuccess: false,
@@ -40,6 +42,8 @@ export const vendorsCustomersReducer = (vendorsCustomersState = initialState, ac
     case AppActionType.DELETE_CUSTOMER_ERROR:
     case AppActionType.UPDATE_VENDOR_ERROR:
     case AppActionType.UPDATE_CUSTOMER_ERROR:
+    case AppActionType.CREATE_VENDOR_ERROR:
+    case AppActionType.CREATE_CUSTOMER_ERROR:
       return {
         isLoading: false,
         isSuccess: false,
@@ -128,6 +132,32 @@ export const vendorsCustomersReducer = (vendorsCustomersState = initialState, ac
         vendors,
         vendor,
         customers: customersToKeep,
+        customer,
+      };
+
+    case AppActionType.CREATE_VENDOR_COMPLETE:
+      updatedVendors = [...vendorsCustomersState.vendors, payload];
+
+      return {
+        isLoading: false,
+        isSuccess: true,
+        error: {},
+        vendors: updatedVendors,
+        vendor,
+        customers,
+        customer,
+      };
+
+    case AppActionType.CREATE_CUSTOMER_COMPLETE:
+      updatedCustomers = [...vendorsCustomersState.customers, payload];
+
+      return {
+        isLoading: false,
+        isSuccess: true,
+        error: {},
+        vendors,
+        vendor,
+        customers: updatedCustomers,
         customer,
       };
 
