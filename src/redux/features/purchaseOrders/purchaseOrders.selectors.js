@@ -9,9 +9,9 @@ export const selectAllPurchaseOrdersData = createSelector(
   purchaseOrdersState => purchaseOrdersState.purchaseOrders
 );
 
-export const selectPurchaseOrdersById = id =>
+export const selectPurchaseOrderById = id =>
   createSelector([selectAllPurchaseOrdersData], purchaseOrdersData =>
-    purchaseOrdersData.find(purchaseOrders => purchaseOrders.id === id)
+    purchaseOrdersData.find(purchaseOrder => purchaseOrder.id === id)
   );
 
 export const selectAllPurchaseOrdersDataAsSelectOptions = createSelector(

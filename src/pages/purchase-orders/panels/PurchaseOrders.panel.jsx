@@ -10,33 +10,33 @@ import { InputField, DateField, SelectField } from "components/widgets";
 
 import { DATE_FILTER_FORMAT } from "variables/app.consts";
 
-export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) => {
+export const PurchaseOrdersPanel = ({ purchaseOrder, groupOptions, onSave }) => {
   const [onboardingDate, setOnboardingDate] = useState(
-    moment(purchaseOrders?.onboardingDate, DATE_FILTER_FORMAT)
+    moment(purchaseOrder?.onboardingDate, DATE_FILTER_FORMAT)
   );
 
   const [offboardingDate, setOffboardingDate] = useState(
-    moment(purchaseOrders?.offboardingDate, DATE_FILTER_FORMAT)
+    moment(purchaseOrder?.offboardingDate, DATE_FILTER_FORMAT)
   );
 
   const purchaseOrdersGroups = useSelector(
-    selectGroupsByIdsAsSelectValues(purchaseOrders.groups || [])
+    selectGroupsByIdsAsSelectValues(purchaseOrder.groups || [])
   );
 
-  const [groups, setGroups] = useState(purchaseOrders.groups || []);
+  const [groups, setGroups] = useState(purchaseOrder.groups || []);
 
   // state to know which group fields has the user selected
   const [currentGroupSelections, setCurrentGroupSelections] = useState(purchaseOrdersGroups);
 
-  const onSavePurchaseOrders = () => {
-    const newPurchaseOrders = {
-      ...purchaseOrders,
+  const onSavePurchaseOrder = () => {
+    const newPurchaseOrder = {
+      ...purchaseOrder,
       onboardingDate: moment(onboardingDate, DATE_FILTER_FORMAT).format(DATE_FILTER_FORMAT),
       offboardingDate: moment(offboardingDate, DATE_FILTER_FORMAT).format(DATE_FILTER_FORMAT),
       groups,
     };
 
-    onSave(newPurchaseOrders);
+    onSave(newPurchaseOrder);
   };
 
   return (
@@ -109,7 +109,7 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
             <InputField
               id="input-title"
               label="Title"
-              value={purchaseOrders.title}
+              value={purchaseOrder.title}
               type="text"
               disabled={true}
             />
@@ -118,7 +118,7 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
             <InputField
               id="input-poNumber"
               label="PO Number"
-              value={purchaseOrders.poNumber}
+              value={purchaseOrder.poNumber}
               type="text"
               disabled={true}
             />
@@ -127,7 +127,7 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
             <InputField
               id="input-vendor"
               label="Vendor"
-              value={purchaseOrders.vendor}
+              value={purchaseOrder.vendor}
               type="text"
               disabled={true}
             />
@@ -138,7 +138,7 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
             <InputField
               id="input-numberOfItems"
               label="Number Of Items"
-              value={purchaseOrders.numberOfItems}
+              value={purchaseOrder.numberOfItems}
               type="text"
               disabled={true}
             />
@@ -147,7 +147,7 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
             <InputField
               id="input-totalQuantity"
               label="Total Quantity"
-              value={purchaseOrders.totalQuantity}
+              value={purchaseOrder.totalQuantity}
               type="text"
               disabled={true}
             />
@@ -156,7 +156,7 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
             <InputField
               id="input-totalCost"
               label="Total Cost"
-              value={purchaseOrders.totalCost}
+              value={purchaseOrder.totalCost}
               type="text"
               disabled={true}
             />
@@ -167,7 +167,7 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
             <InputField
               id="input-addedBy"
               label="Added By"
-              value={purchaseOrders.addedBy}
+              value={purchaseOrder.addedBy}
               type="text"
               disabled={true}
             />
@@ -176,7 +176,7 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
             <InputField
               id="input-dateAdded"
               label="Date Added"
-              value={purchaseOrders.dateAdded}
+              value={purchaseOrder.dateAdded}
               type="text"
               disabled={true}
             />
@@ -185,14 +185,14 @@ export const PurchaseOrdersPanel = ({ purchaseOrders, groupOptions, onSave }) =>
             <InputField
               id="input-dueDate"
               label="Due Date"
-              value={purchaseOrders.dueDate}
+              value={purchaseOrder.dueDate}
               type="text"
               disabled={true}
             />
           </Col>
         </Row>
         <Row>
-          <Button color="primary" type="button" onClick={onSavePurchaseOrders}>
+          <Button color="primary" type="button" onClick={onSavePurchaseOrder}>
             Update Purchase Orders
           </Button>
         </Row>

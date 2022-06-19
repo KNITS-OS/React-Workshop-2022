@@ -5,8 +5,8 @@ import { Button, Card, CardBody, CardHeader, Col, Container, Row, Spinner } from
 
 import {
   selectAllGroupsDataAsSelectOptions,
-  selectPurchaseOrdersById,
-  updatePurchaseOrders,
+  selectPurchaseOrderById,
+  updatePurchaseOrder,
 } from "redux/features";
 
 import { BoxHeader } from "components/headers";
@@ -17,16 +17,16 @@ import { useLocalStateAlerts } from "hooks";
 
 export const PurchaseOrdersDetailsPage = () => {
   const { id } = useParams();
-  const purchaseOrdersId = parseInt(id);
+  const purchaseOrderId = parseInt(id);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const { alert, setSaveSent, setSuccessMessage, setIsSuccess } = useLocalStateAlerts();
 
-  const purchaseOrders = useSelector(selectPurchaseOrdersById(purchaseOrdersId));
+  const purchaseOrder = useSelector(selectPurchaseOrderById(purchaseOrderId));
   const groupOptions = useSelector(selectAllGroupsDataAsSelectOptions);
 
-  if (!purchaseOrders) {
+  if (!purchaseOrder) {
     return (
       <div className="text-center">
         <Spinner />
@@ -34,8 +34,8 @@ export const PurchaseOrdersDetailsPage = () => {
     );
   }
 
-  const onSavePurchaseOrders = async updatedPurchaseOrders => {
-    dispatch(updatePurchaseOrders({ id: purchaseOrdersId, body: updatedPurchaseOrders }));
+  const onSavePurchaseOrder = async updatedPurchaseOrder => {
+    dispatch(updatePurchaseOrder({ id: purchaseOrderId, body: updatedPurchaseOrder }));
 
     setSuccessMessage("Purchase Orders Updated");
     setSaveSent(true);
@@ -70,9 +70,9 @@ export const PurchaseOrdersDetailsPage = () => {
               </CardHeader>
               <CardBody>
                 <PurchaseOrdersPanel
-                  purchaseOrders={purchaseOrders}
+                  purchaseOrder={purchaseOrder}
                   groupOptions={groupOptions}
-                  onSave={onSavePurchaseOrders}
+                  onSave={onSavePurchaseOrder}
                 />
               </CardBody>
             </Card>

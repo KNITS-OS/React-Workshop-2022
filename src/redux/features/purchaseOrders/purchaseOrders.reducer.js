@@ -17,8 +17,8 @@ export const purchaseOrdersReducer = (purchaseOrdersState = initialState, action
 
   switch (type) {
     case AppActionType.FETCH_PURCHASE_ORDERS_LOADING:
-    case AppActionType.UPDATE_PURCHASE_ORDERS_LOADING:
-    case AppActionType.DELETE_PURCHASE_ORDERS_LOADING:
+    case AppActionType.UPDATE_PURCHASE_ORDER_LOADING:
+    case AppActionType.DELETE_PURCHASE_ORDER_LOADING:
     case AppActionType.CREATE_PURCHASE_ORDER_LOADING:
       return {
         isLoading: true,
@@ -29,8 +29,8 @@ export const purchaseOrdersReducer = (purchaseOrdersState = initialState, action
       };
 
     case AppActionType.FETCH_PURCHASE_ORDERS_ERROR:
-    case AppActionType.UPDATE_PURCHASE_ORDERS_ERROR:
-    case AppActionType.DELETE_PURCHASE_ORDERS_ERROR:
+    case AppActionType.UPDATE_PURCHASE_ORDER_ERROR:
+    case AppActionType.DELETE_PURCHASE_ORDER_ERROR:
     case AppActionType.CREATE_PURCHASE_ORDER_ERROR:
       return {
         isLoading: false,
@@ -49,7 +49,7 @@ export const purchaseOrdersReducer = (purchaseOrdersState = initialState, action
         singlePurchaseOrder,
       };
 
-    case AppActionType.UPDATE_PURCHASE_ORDERS_COMPLETE:
+    case AppActionType.UPDATE_PURCHASE_ORDER_COMPLETE:
       updatedPurchaseOrders = purchaseOrdersState.purchaseOrders.map(singlePurchaseOrder => {
         if (singlePurchaseOrder.id === payload.id) {
           return {
@@ -69,7 +69,7 @@ export const purchaseOrdersReducer = (purchaseOrdersState = initialState, action
         singlePurchaseOrder: payload,
       };
 
-    case AppActionType.DELETE_PURCHASE_ORDERS_COMPLETE:
+    case AppActionType.DELETE_PURCHASE_ORDER_COMPLETE:
       purchaseOrdersToKeep = purchaseOrdersState.purchaseOrders.filter(({ id }) => id !== payload);
 
       return {

@@ -7,7 +7,7 @@ import { Card, CardBody, Container, Row, Col, Input, Label, Button } from "react
 import {
   selectAllPurchaseOrdersData,
   fetchPurchaseOrders,
-  deletePurchaseOrders,
+  deletePurchaseOrder,
   createPurchaseOrder,
 } from "redux/features";
 
@@ -33,11 +33,11 @@ export const PurchaseOrdersPage = () => {
     navigate(`/admin${PURCHASE_ORDERS_DETAILS}/${id}`);
   };
 
-  const onDeletePurchaseOrders = e => {
+  const onDeletePurchaseOrder = e => {
     e.preventDefault();
     const { id } = e.currentTarget;
 
-    dispatch(deletePurchaseOrders(parseInt(id)));
+    dispatch(deletePurchaseOrder(parseInt(id)));
   };
 
   const onCreateNewPurchaseOrder = e => {
@@ -85,7 +85,7 @@ export const PurchaseOrdersPage = () => {
                 data={purchaseOrders}
                 columns={PurchaseOrdersTableColumns({
                   onDetailsButtonClick: onViewPurchaseOrdersDetails,
-                  onRemoveButtonClick: onDeletePurchaseOrders,
+                  onRemoveButtonClick: onDeletePurchaseOrder,
                 })}
               />
             </Card>
