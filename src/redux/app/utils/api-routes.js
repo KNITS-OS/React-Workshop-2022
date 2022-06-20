@@ -4,6 +4,10 @@ export const DOCUMENT_ROUTE = "/document";
 export const COUNTRY_ROUTE = "/country";
 export const BUSINESS_UNIT_ROUTE = "/business-unit";
 export const GROUP_ROUTE = "/group";
+export const PARTS_INVENTORY_ROUTE = "/partsInventory";
+export const PURCHASE_ORDERS_ROUTE = "/purchaseOrders";
+export const VENDORS_ROUTE = "/vendors";
+export const CUSTOMERS_ROUTE = "/customers";
 
 export const REPORT_MEMBERS_TURNOVER_ROUTE = "/report-members-turnover";
 export const REPORT_MEMBERS_WORKFORCE_ROUTE = "/workforce-report";

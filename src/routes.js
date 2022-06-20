@@ -3,7 +3,10 @@ import { dashboardMenu } from "pages/dashboards";
 import { documentsMenu } from "pages/documents";
 import { groupMenu } from "pages/groups";
 import { homeMenu } from "pages/home";
+import { partsInventoryPage } from "pages/parts-inventory";
+import { purchaseOrdersPage } from "pages/purchase-orders";
 import { userMenu } from "pages/users";
+import { vendorsCustomersPage } from "pages/vendors-customers";
 
 export const routes = [
   ...homeMenu,
@@ -12,4 +15,7 @@ export const routes = [
   ...dashboardMenu,
   ...documentsMenu,
   ...authMenu,
+  ...partsInventoryPage,
+  ...purchaseOrdersPage,
+  ...vendorsCustomersPage,
 ];

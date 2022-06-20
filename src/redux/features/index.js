@@ -5,3 +5,6 @@ export * from "./countries";
 export * from "./dashboards";
 export * from "./groups";
 export * from "./world-overview";
+export * from "./partsInventory";
+export * from "./purchaseOrders";
+export * from "./vendorsCustomers";
